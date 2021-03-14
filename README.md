@@ -109,24 +109,17 @@ You should have the following ready before beginning with any board:
 
 4. Update IoT Hub Connection string in `iot_configs.h`
 
-5. Configure board library using the automation script and `python3`. If you choose this method you can skip step 6.
-    - Clone or download this repo: `git clone https://github.com/Azure/azure-iot-pal-arduino.git` , navigate to the downloaded sub-folder: `cd azure-iot-pal-arduino/build_all/base-libraries/AzureIoTHub/src/scripts` , and check that the script `automate_board_config.py` exists in this location. If this folder or script cannot be located, download the script [directly](https://raw.githubusercontent.com/Azure/azure-iot-pal-arduino/master/build_all/base-libraries/AzureIoTHub/src/scripts/automate_board_config.py).
-    - Run the script E.x.: `python3 automate_board_config.py` and select appropriate options.
-    - Note: if you update or reinstall your board library in Arduino you will need to run this script again.
-
-6. Navigate to where your esp32 board package is located, typically in `C:\Users\<your username>\AppData\Local\Arduino15\packages` on Windows and `~/.arduino15/packages/` on Linux
+5. Navigate to where your esp32 board package is located, typically in `C:\Users\<your username>\AppData\Local\Arduino15\packages` on Windows and `~/.arduino15/packages/` on Linux
 
 	- Navigate deeper in to `hardware/esp8266/<board package version>/` where the `platform.txt` file lives.
 	
-	- Copy the [`platform.local.txt`](https://github.com/Azure/azure-iot-arduino/blob/master/examples/iothub_ll_telemetry_sample/esp32/platform.local.txt) file from the `esp32` folder in the sample into the same folder as the `platform.txt`.
+	- Remove all content from `platform.local.txt`. Paste the following line: `build.extra_flags=-DESP8266 -DDONT_USE_UPLOADTOBLOB -DUSE_BALTIMORE_CERT`.
 	
-	- Alternatively, or for later versions of the Board Package, add the define `-DDONT_USE_UPLOADTOBLOB` to `build.extra_flags=` in `platform.txt` or a `platform.local.txt` that you create.
+6. Run the sample.
 	
-7. Run the sample.
-	
-8. Access the [SparkFun Get Started](https://azure.microsoft.com/en-us/documentation/samples/iot-hub-c-thingdev-getstartedkit/) tutorial to learn more about Microsoft Sparkfun Dev Kit.
+7. Access the [SparkFun Get Started](https://azure.microsoft.com/en-us/documentation/samples/iot-hub-c-thingdev-getstartedkit/) tutorial to learn more about Microsoft Sparkfun Dev Kit.
 
-9. Access the [Huzzah Get Started](https://azure.microsoft.com/en-us/documentation/samples/iot-hub-c-huzzah-getstartedkit/) tutorial to learn more about Microsoft Huzzah Dev Kit.
+8. Access the [Huzzah Get Started](https://azure.microsoft.com/en-us/documentation/samples/iot-hub-c-huzzah-getstartedkit/) tutorial to learn more about Microsoft Huzzah Dev Kit.
 
 ## License
 
